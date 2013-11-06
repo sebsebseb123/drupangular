@@ -143,4 +143,4 @@ DirectoryIndex index.php index.html index.htm
 </IfModule>
 
 # CORS setting.
-Header add Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Origin "*"
