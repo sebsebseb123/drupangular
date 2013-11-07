@@ -486,6 +486,11 @@ class RESTServer {
       return services_error('OK', 200);
     }
 
+    // For any OPTIONS request return response "200 OK".
+    if ($request_method == 'OPTIONS') {
+      return services_error('OK', 200);
+    }
+
     // We do not group "if" conditions on purpose for better readability.
 
     // 'index' method.
