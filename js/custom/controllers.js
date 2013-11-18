@@ -49,6 +49,9 @@ thumbsControllers.controller('listCtrl', ['$scope', '$http',
       // Enable radio buttons for rating.
       $scope.enableRating = 'disabled';
 
+      // Setup the ajax loading var.
+      $scope.ajaxLoading = false;
+
       // Add a new rating to the list.
       $scope.addNewRating = function (newRating) {
          var nodeData = {
@@ -57,17 +60,38 @@ thumbsControllers.controller('listCtrl', ['$scope', '$http',
             'field_rating': {'und': {'value': newRating}}
          };
 
+         // Set the loading class.
+         $scope.ajaxLoading = false;
+
          $http({url: 'drupal/api/node.json', method: 'POST', data: nodeData}).
             success(function(data, status) {
                $scope.thumbs.unshift ( {description: $scope.newDescription , rating: newRating});
                // Reset vars.
                $scope.newDescription = '';
                $scope.enableRating = 'disabled';
+               // Remove the loading class.
+               $scope.ajaxLoading = false;
             }).
             error(function(data, status) {
                debugger;
             });
       }
+
+      // Get a random placeholder msg.
+      var messages = [
+         "Where's the beef?",
+         "Did you like things?",
+         "Something the matter?",
+         "...message goes here.",
+         "This is placeholder text.",
+         "We did good?",
+         "Hit the checkmark!",
+         "Got an issue?",
+         "Que es tu problema?",
+         "Tell us what loved, or hated."
+      ];
+      var randIndex = Math.floor(Math.random() * messages.length);
+      $scope.placeholder = messages[randIndex];
    }
 ]);
 

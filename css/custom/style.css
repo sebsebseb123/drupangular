@@ -45,6 +45,23 @@ a:hover {
     box-shadow: 0 0 3px rgba(0,0,0,1);
   }
 
+input {
+  padding: 3px 0 2px 5px;
+  width: 240px;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+  color: rgba(0,0,0,0.25);
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: rgba(0,0,0,0.25);
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: rgba(0,0,0,0.25);
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: rgba(0,0,0,0.25);
+}
+
 ul {
   padding: 0;
 }
@@ -117,3 +134,4 @@ ul li {
   width: 25px;
   height: 25px;
 }
+

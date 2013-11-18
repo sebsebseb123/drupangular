@@ -4,7 +4,7 @@
       <div class="info">
         Total thumbs: {{thumbs.length}}
       </div>
-      <input type="text" ng-model="newDescription" />
+      <input type="text" ng-model="newDescription" placeholder="{{placeholder}}" class="{{ajaxLoading ? ' loading' : ''}}" />
       <div ng-show="newDescription.length" ng-repeat="type in typesOfRatings" ng-click="addNewRating(type.rating)" class="thumb-type thumb-{{type.rating}}">
         {{type.rating}}
       </div>
