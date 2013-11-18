@@ -1,0 +1,20 @@
+    <!-- Song Container -->
+    <div class="container{{songDetail ? '' : ' loading'}}">
+      <h1>{{songDetail.title}}</h1>
+      <div class=="row">
+        <div class="box col-md-12">
+          <div ng-bind-html="songDetail.albumArt" class="album-art"></div>
+          <p ng-bind-html="songDetail.body" class="description"></p>
+          <div class="play">
+            <a ng-click="setMp3()" class="button">
+              Play
+            </a>
+          </div>
+          <div class="download">
+            <a href="{{songDetail.mp3}}" class="button">
+              Download
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>

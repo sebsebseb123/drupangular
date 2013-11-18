@@ -1,49 +1,44 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="thumbsApp">
   <head>
     <title>Thumbs Up/Down App | Angular JS</title>
+
     <!-- Angular JS - CDN -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular-route.min.js"></script>
-    <!--script src="//code.angularjs.org/1.0.8/angular-route.min.js"></script-->
-    <!--script src="//code.angularjs.org/1.0.8/angular-sanitize.min.js"></script-->
+    <script src="//code.angularjs.org/1.2.1/angular.min.js"></script>
+    <script src="//code.angularjs.org/1.2.1/angular-sanitize.min.js"></script>
+    <script src="//code.angularjs.org/1.2.1/angular-route.min.js"></script>
 
     <!-- Bootstrap - Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <!-- Bootstrap - CSS Optional theme -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/contrib/bootstrap.min.css">
+    <link rel="stylesheet" href="css/contrib/bootstrap-theme.min.css">
 
-    <!-- jQuery - CDN -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
-    <!-- Bootstrap - JS CDN -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Custom script -->
-    <script src="script.js"></script>
+    <!-- Custom CSS & JS -->
+    <link rel="stylesheet" href="css/custom/style.css">
+    <script src="js/custom/app.js"></script>
+    <script src="js/custom/controllers.js"></script>
   </head>
 
-  <body ng-controller="thumbsController">
-    <div class="container">
-      <h1>Thumbs Up/Down List</h1>
-      <div class="info">
-        Total thumbs: {{thumbs.length}}
+  <body ng-controller="chromeCtrl">
+
+    <!-- Menu Container -->
+    <div class="container{{menu ? '' : ' loading'}}">
+      <div class="row menu">
+        <ul>
+          <li ng-repeat="item in menu">
+            <a href="{{item.path}}" class="col-md-1">{{item.label}}</a>
+          </li>
+        </ul>
+        <div class="player pull-right{{mp3Url ? '' : ' noMp3'}}">
+          <button ng-click="closePlayer()" class="close pull-right">&times;</button>
+          <audio autoplay controls src="{{mp3Url}}">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        </div>
       </div>
-      <input type="text" ng-model="newDescription" />
-      <div ng-show="newDescription.length" ng-repeat="type in typesOfRatings" ng-click="addNewRating(type.rating)" class="thumb-type thumb-{{type.rating}}">
-        {{type.rating}}
-      </div>
-      <ul class="ratings">
-        <li ng-repeat="thumb in thumbs"
-            class="thumbs-{{thumb.rating}}">
-          <div class="thumb-rating thumb-{{thumb.rating}}">
-            {{thumb.rating}}
-          </div>
-          <span class="thumbs-{{thumb.rating}}">{{thumb.description}}</span>
-        </li>
-      </ul>
     </div>
+
+    <!-- View -->
+    <div ng-view></div>
   </body>
 </html>

@@ -1,0 +1,14 @@
+    <!-- Song Index Container -->
+    <div class="container{{songIndex ? '' : ' loading'}}">
+      <h1>Songs</h1>
+      <div class="info">
+        Songs: {{songIndex.length}}
+      </div>
+      <div class=="row">
+        <div ng-repeat="song in songIndex" class="box col-md-2">
+          <h4><a href="#/songs/{{song.nid}}">{{song.title}}</a></h4>
+          <span ng-bind-html="song.albumArt"></span>
+          <div ng-bind-html="song.summary" class="summary"></div>
+        </div>
+      </div>
+    </div>

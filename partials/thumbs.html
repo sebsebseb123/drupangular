@@ -1,0 +1,20 @@
+    <!-- Thumbs Container -->
+    <div class="container{{thumbs ? '' : ' loading'}}">
+      <h1>Thumbs Up/Down List</h1>
+      <div class="info">
+        Total thumbs: {{thumbs.length}}
+      </div>
+      <input type="text" ng-model="newDescription" />
+      <div ng-show="newDescription.length" ng-repeat="type in typesOfRatings" ng-click="addNewRating(type.rating)" class="thumb-type thumb-{{type.rating}}">
+        {{type.rating}}
+      </div>
+      <ul class="ratings">
+        <li ng-repeat="thumb in thumbs"
+            class="thumbs-{{thumb.rating}}">
+          <div class="thumb-rating thumb-{{thumb.rating}}">
+            {{thumb.rating}}
+          </div>
+          <span class="thumbs-{{thumb.rating}}">{{thumb.description}}</span>
+        </li>
+      </ul>
+    </div>
