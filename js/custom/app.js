@@ -7,6 +7,9 @@ var thumbsApp = angular.module('thumbsApp', [
 thumbsApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
+      when('/', {
+        templateUrl: 'partials/home.html',
+      }).
       when('/thumbs', {
         templateUrl: 'partials/thumbs.html',
         controller: 'listCtrl'
